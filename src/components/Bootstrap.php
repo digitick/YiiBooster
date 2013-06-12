@@ -201,7 +201,7 @@ class Bootstrap extends CApplicationComponent
 	    if (!$this->ajaxCssLoad && Yii::app()->request->isAjaxRequest) {
 	        return;
 	    }
-	    
+
 		if ($this->responsiveCss !== false) {
 			$this->registerPackage('full.css')->registerMetaTag('width=device-width, initial-scale=1.0', 'viewport');
 		} else {
@@ -229,7 +229,7 @@ class Bootstrap extends CApplicationComponent
 	     if (!$this->ajaxJsLoad && Yii::app()->request->isAjaxRequest) {
 	        return;
 	    }
-	    
+
 		$this->registerCoreScripts();
 		$this->registerTooltipAndPopover();
 	}
@@ -257,7 +257,7 @@ class Bootstrap extends CApplicationComponent
 	 */
 	public function registerFontAwesomeCss()
 	{
-		if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 7.0')) {
+		if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 7.0')) {
 			$this->registerPackage('font-awesome')->registerPackage('font-awesome-ie7');
 		} else {
 			$this->registerPackage('font-awesome');
